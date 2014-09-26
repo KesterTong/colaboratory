@@ -1,0 +1,8 @@
+version: v1beta1
+containers:
+  - name: colaboratory
+    image: jupyter/colaboratory
+    ports:
+      - name: www
+        containerPort: 8844
+        hostPort: 8844
