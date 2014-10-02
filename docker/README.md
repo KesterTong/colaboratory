@@ -6,9 +6,9 @@ It is important to note that this built is experimental, and not designed work a
 
 In general, it is important to note the following things:
 
- * Running coLaboratory as a specific user, will allow *any* users to execute code as that user, using the IPython kernel, unless specific steps are taken to prvent this.  Therefore you should only run the Docker image under an account that is shared by all users.
+ * Running coLaboratory as a specific user, will allow *any* users to execute code as that user, using the IPython kernel, unless specific steps are taken to prvent this.  Therefore **you should only run the Docker image under an account that is shared by all users**.
 
- * If you expose the port the coLaboratory listens on (in this case 8844) to the web, then any user on the internet will be able to execute code, which is almost certainly not what you want.  Therefore, unless you know what you are doing you should connect using SSH port forwarding, like you would to an ordinary desktop computer.
+ * If you expose the port the coLaboratory listens on (in this case 8844) to the web, then any user on the internet will be able to execute code, which is almost certainly not what you want.  Therefore, unless you know what you are doing **you should connect using SSH port forwarding, not by exposing port 8844 to the open web**.
 
 ## Installing on Specific Platforms
 
@@ -19,7 +19,8 @@ This section assumes you already have a Google Cloud account.  To setup you own 
   3. Set Cloud Console Project to any project you own by running ```$ gcloud config set project [my-project-name]```
 
 ####Creating an Instance
-To create a Google Compute Engine instance running the docker image, run the following command while in this directory:
+To create a Google Compute Engine instance running the docker image, first download the file ```manifest.yaml``` from this [link](https://github.com/KesterTong/colaboratory/blob/gcedocs/docker/manifest.yaml).  From the directory where you downloaded ```manifest.yaml``` to, run the command
+
 ```
 gcloud compute instances create [instance-name] \
   --metadata-from-file google-container-manifest=manifest.yaml \
