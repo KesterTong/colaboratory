@@ -34,6 +34,12 @@ The ```--scopes``` param indicates that permissions for the default service acco
 
 Setup takes around 5 minutes.
 
+#### Security
+
+As explained in the overview, all users with access to the port that coLaboratory listens on, will be able to run code as the user that coLaboratory runs as.  When set up this way, coLaboratory will run as root.  In general, this should not be a problem because all users who are "editors" or "owners" or the Cloud Console Project, have root access.  If you are givng users access through some other means than making them editors or owners of the Cloud Console Project, then you should understand that even if you don't grant a user root access, they will still have it via coLaboratory.
+
+You should also not manually expose port 8844 or any other port to the internet, unless you are absolutely sure this is what you want to do and understand the consequences.  Otherwise, the ssh that is already set up with the instance will be sufficient for allowing users to access the instance.
+
 ####Logging on
 In order to have access to this instance from your own computer, you need to ssh into GCE with port forwarding.  This allows you to access the port that coLaboratory listens on, from your own machine.  To do this, run the command
 ```
